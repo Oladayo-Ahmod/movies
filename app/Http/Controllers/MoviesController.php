@@ -6,6 +6,8 @@ use Illuminate\Http\JsonResponse;
 use App\Http\Requests\StoreMoviesRequest;
 use App\Http\Requests\UpdateMoviesRequest;
 use App\Models\Movies;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class MoviesController extends Controller
 {
@@ -43,9 +45,21 @@ class MoviesController extends Controller
      * @param  \App\Http\Requests\StoreMoviesRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMoviesRequest $request)
+    public function store(Request $request): JsonResponse 
     {
-        //
+        $movieDetails = $request->only([
+            'title',
+            'location',
+            'details',
+            'avatar'
+        ]);
+
+        return response()->json(
+            [
+                'data' => $this->moviesRepository->createMovies($movieDetails)
+            ],
+            Response::HTTP_CREATED
+        );
     }
 
     /**
@@ -54,9 +68,13 @@ class MoviesController extends Controller
      * @param  \App\Models\Movies  $movies
      * @return \Illuminate\Http\Response
      */
-    public function show(Movies $movies)
+    public function show(Request $request): JsonResponse 
     {
-        //
+        $movieId = $request->route('id');
+
+        return response()->json([
+            'data' => $this->moviesRepository->getMoviesById($movieId)
+        ]);
     }
 
     /**
@@ -65,31 +83,26 @@ class MoviesController extends Controller
      * @param  \App\Models\Movies  $movies
      * @return \Illuminate\Http\Response
      */
-    public function edit(Movies $movies)
+    public function update(Request $request): JsonResponse 
     {
-        //
+        $movieId = $request->route('id');
+        $movieDetails = $request->only([
+            'title',
+            'location',
+            'details',
+            'avatar'
+        ]);
+
+        return response()->json([
+            'data' => $this->moviesRepository->updateMovies($movieId, $movieDetails)
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateMoviesRequest  $request
-     * @param  \App\Models\Movies  $movies
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateMoviesRequest $request, Movies $movies)
+    public function destroy(Request $request): JsonResponse 
     {
-        //
-    }
+        $movieId = $request->route('id');
+        $this->movieRepository->deleteMovies($movieId);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Movies  $movies
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Movies $movies)
-    {
-        //
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }
