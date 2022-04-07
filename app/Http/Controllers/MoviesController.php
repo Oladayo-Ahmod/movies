@@ -22,7 +22,7 @@ class MoviesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): JsonResponse 
+    public function index()
     {
         return response()->json([
             'data' => $this->moviesRepository->getAllMovies()
@@ -45,7 +45,7 @@ class MoviesController extends Controller
      * @param  \App\Http\Requests\StoreMoviesRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): JsonResponse 
+    public function store(Request $request) 
     {
         $movieDetails = $request->only([
             'title',
@@ -68,7 +68,7 @@ class MoviesController extends Controller
      * @param  \App\Models\Movies  $movies
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request): JsonResponse 
+    public function show(Request $request) 
     {
         $movieId = $request->route('id');
 
@@ -83,7 +83,7 @@ class MoviesController extends Controller
      * @param  \App\Models\Movies  $movies
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request): JsonResponse 
+    public function update(Request $request) 
     {
         $movieId = $request->route('id');
         $movieDetails = $request->only([
@@ -98,7 +98,7 @@ class MoviesController extends Controller
         ]);
     }
 
-    public function destroy(Request $request): JsonResponse 
+    public function destroy(Request $request) 
     {
         $movieId = $request->route('id');
         $this->movieRepository->deleteMovies($movieId);
