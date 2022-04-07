@@ -26,7 +26,8 @@ class MoviesController extends Controller
     {
         // return response()->json([
             $data = $this->moviesRepository->getAllMovies();
-            return view('movies',['movies'=>$data]);
+            // return $data;
+            // return view('movies',['movies'=>$data]);
         // ]);
     }
 

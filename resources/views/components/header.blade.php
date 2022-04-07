@@ -13,8 +13,8 @@
 </head>
 <body>
    
-
-        <!-- Nav tabs -->
+@if (Session::has('user'))
+            <!-- Nav tabs -->
 <ul class="nav nav-tabs|pills" id="navId" role="tablist">
     <li class="nav-item">
         <a href="#tab1Id" class="nav-link active" data-bs-toggle="tab">Active</a>
@@ -33,6 +33,8 @@
     </li>
    
 </ul>
+@endif
+
 
 
 
