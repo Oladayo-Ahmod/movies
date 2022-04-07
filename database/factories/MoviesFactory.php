@@ -18,7 +18,7 @@ class MoviesFactory extends Factory
             'title'=>$this->faker->sentence(4,true),
             'location'=>$this->faker->numberBetween(1,3),
             'details'=>$this->faker->sentence(6,true),
-            'avatar'=>$this->faker->image('public/assets/images'),
+            'avatar'=>$this->faker->image('public/assets/images',800,600,null,true,null,false),
         ];
     }
 }
