@@ -18,6 +18,7 @@ use App\Http\Controllers\MoviesController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+// movies routes
 Route::get('movies', [MoviesController::class, 'index']);
 Route::get('movies/{id}', [MoviesController::class, 'show']);
 Route::post('movies', [MoviesController::class, 'store']);
