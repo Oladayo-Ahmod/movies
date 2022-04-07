@@ -1,21 +1,30 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Interfaces\MoviesRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 use App\Http\Requests\StoreMoviesRequest;
 use App\Http\Requests\UpdateMoviesRequest;
 use App\Models\Movies;
 
 class MoviesController extends Controller
 {
+    private MoviesRepositoryInterface $orderRepository;
+
+    public function __construct(MoviesRepositoryInterface $moviesRepository) 
+    {
+        $this->moviesRepository = $moviesRepository;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): JsonResponse 
     {
-        //
+        return response()->json([
+            'data' => $this->moviesRepository->getAllOrders()
+        ]);
     }
 
     /**
