@@ -20,14 +20,14 @@ class UserController extends Controller
             # code...
             if (Hash::check($req->password,$data->password)) {
                 $req->session()->put('user',$data);
-                return redirect('/');
+                return redirect('/movies');
             }
             else{
-                return back()->with('failure','incorrect username or password');
+                return back()->with('failure','incorrect email or password');
             }
         }
         else{
-            return back()->with('failure','incorrect username or password');
+            return back()->with('failure','email not found');
         }
          
     }

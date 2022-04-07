@@ -5,7 +5,7 @@ $.ajaxSetup({
     }
 })
 
-// add to cart functionality
+// login functionality
 add_to_cart = (element)=>{
     $('.add-to-cart-btn').attr('disabled',true)
     $('.add-to-cart-btn').removeClass('btn-warning')
