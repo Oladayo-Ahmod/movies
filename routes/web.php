@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
+use Session;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 Route::view('login', 'login');
 Route::post('/register',[UserController::class, 'login']);
+Route::get('/logout', function () {
+    Session::forget('user');
+    return redirect('/');
+}); // user logout route

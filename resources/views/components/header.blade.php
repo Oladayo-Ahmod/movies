@@ -17,7 +17,12 @@
             <!-- Nav tabs -->
 <ul class="nav nav-tabs|pills" id="navId" role="tablist">
     <li class="nav-item">
-        <a href="#tab1Id" class="nav-link active" data-bs-toggle="tab">Active</a>
+        <a href="#tab1Id" class="nav-link active" data-bs-toggle="tab">cinema 1</a>
+    </li>
+    <li class="nav-item">
+        <a href="#tab1Id" class="nav-link active" data-bs-toggle="tab">cinema 2</a>
+    </li> <li class="nav-item">
+        <a href="#tab1Id" class="nav-link active" data-bs-toggle="tab">cinema 3</a>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{Session::get('user')['name']}}</a>
@@ -26,11 +31,7 @@
            
         </div>
     </li>
-    <li class="nav-item" role="presentation">
-        <a href="#tab5Id" class="nav-link" data-bs-toggle="tab">Cinema 1</a>
-        <a href="#tab5Id" class="nav-link" data-bs-toggle="tab">Cinema 2</a>
-        <a href="#tab5Id" class="nav-link" data-bs-toggle="tab">Cinema 3</a>
-    </li>
+   
    
 </ul>
 @endif
