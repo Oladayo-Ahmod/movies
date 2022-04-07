@@ -24,9 +24,10 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'data' => $this->moviesRepository->getAllMovies()
-        ]);
+        // return response()->json([
+            $data = $this->moviesRepository->getAllMovies();
+            return view('movies',['movies'=>$data]);
+        // ]);
     }
 
     /**
