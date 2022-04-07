@@ -11,11 +11,11 @@ use Illuminate\Http\Response;
 
 class MoviesController extends Controller
 {
-    private MoviesRepositoryInterface $orderRepository;
+    private MoviesRepositoryInterface $movieRepository;
 
-    public function __construct(MoviesRepositoryInterface $moviesRepository) 
+    public function __construct(MoviesRepositoryInterface $movieRepository) 
     {
-        $this->moviesRepository = $moviesRepository;
+        $this->moviesRepository = $movieRepository;
     }
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class MoviesController extends Controller
     public function index(): JsonResponse 
     {
         return response()->json([
-            'data' => $this->moviesRepository->getAllOrders()
+            'data' => $this->moviesRepository->getAllMovies()
         ]);
     }
 
