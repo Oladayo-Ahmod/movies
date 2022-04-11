@@ -27,6 +27,11 @@ class MoviesController extends Controller
         // ]);
     }
 
+    // filter movies
+    public function movies_filter(Request $request)
+    {
+        $data = $this->movieRepository->filterMovies($request->id);
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -18,7 +18,7 @@
 @if (Session::has('user'))
             <!-- Nav tabs -->
     <section>
-        <form action="{{route('movies.filter')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('movies.filter')}}" method="GET" enctype="multipart/form-data">
             <ul class="nav nav-tabs|pills" id="navId" role="tablist">
                 @csrf
 

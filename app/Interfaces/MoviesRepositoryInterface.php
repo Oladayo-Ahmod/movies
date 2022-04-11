@@ -9,5 +9,6 @@ interface MoviesRepositoryInterface
     public function deleteMovies($movieId);
     public function createMovies(array $movieDetails);
     public function updateMovies($movieId, array $newDetails);
+    public function filterMovies($cinemaId);
     // public function getFulfilledMovies();
 }

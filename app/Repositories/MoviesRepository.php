@@ -32,6 +32,10 @@ class MoviesRepository implements MoviesRepositoryInterface
         return Movies::whereId($moviesId)->update($newDetails);
     }
 
+    public function filterMovies($cinemaId)
+    {
+        return Movies::where('location',$cinemaId)->get();
+    }
     // public function getFulfilledmoviess() 
     // {
     //     return movies::where('is_fulfilled', true);
