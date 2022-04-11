@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use Session;
+use Illuminate\Support\Facades\Session;
+// use Session;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

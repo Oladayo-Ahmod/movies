@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Interfaces\MoviesRepositoryInterface;
-use Illuminate\Http\JsonResponse;
-use App\Http\Requests\StoreMoviesRequest;
-use App\Http\Requests\UpdateMoviesRequest;
-use App\Models\Movies;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -26,7 +22,7 @@ class MoviesController extends Controller
     {
         // return response()->json([
             $data = $this->moviesRepository->getAllMovies();
-            // return $data;
+            return response()->json($data);
             // return view('movies',['movies'=>$data]);
         // ]);
     }

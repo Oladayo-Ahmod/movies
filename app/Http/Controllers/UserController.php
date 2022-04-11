@@ -17,7 +17,7 @@ class UserController extends Controller
     }
     //
       // login functionality
-      function login(Request $req){
+      function login(Request $req){ 
         // validate login
         $validate = $req->validate([
             'email'=> 'required|max:150',

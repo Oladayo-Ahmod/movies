@@ -13,7 +13,12 @@
                            </div>
                             <div class="card-body">
                                 <h6 class="card-title ">{{$movie['title']}}</h6>
-                                <small class="card-text">{{$movie['details']}}</small>
+                                <small class="card-text">{{$movie['details']}}</small> <br>
+                                <i class="fas fa-clock"></i><small class="card-text">
+                                    @php
+                                        $mov = date('j M Y ',strtotime($movie['created_at']));
+                                    @endphp
+                                    {{$mov}}</small>
                             </div>
                         </div>
                 </div>

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ url('assets/css/bootstrap.css')}}" type="text/css" rel="stylesheet">
+    <link href="{{ url('assets/css/all.css')}}" type="text/css" rel="stylesheet">
+    <link href="{{ url('assets/css//fontawesome.min.css')}}" type="text/css" rel="stylesheet">
     <link href="{{ url('assets/css/style.css')}}" type="text/css" rel="stylesheet">
     <meta name="csrf-token" content="{{csrf_token()}}">
     <link rel="stylesheet" href="{{ url('assets/css/sweetalert2.min.css') }}">
