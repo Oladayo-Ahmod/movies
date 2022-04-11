@@ -9,11 +9,11 @@ $.ajaxSetup({
 filter_cinema = (element)=>{
     let parent = element.parentElement;
     let id = parent.querySelector('.cinema_filter').value;
-    console.log(id)
+    console.log(parent.parentElement.parentElement)
     let form = new FormData();
     form.append('id',id);
-    let url = parent.parentElement.querySelector('form').getAttribute('action');
-    let type = parent.parentElement.querySelector('form').getAttribute('method');
+    let url = parent.parentElement.parentElement.parentElement.querySelector('form').getAttribute('action');
+    let type = parent.parentElement.parentElement.parentElement.querySelector('form').getAttribute('method');
     $.ajax({
         url :url,
         method : type,
@@ -22,6 +22,7 @@ filter_cinema = (element)=>{
         dataType : 'json',
         contentType : false,
         success : function(response){
+            console.log(response)
             if (response.msg = 'success') {
                 Swal.fire(
                     'Added',
