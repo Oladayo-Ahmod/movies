@@ -12,9 +12,9 @@ class MoviesRepository implements MoviesRepositoryInterface
         return Movies::all();
     }
 
-    public function getmoviesById($moviesId) 
+    public function getmoviesById($location,$cinemaId) 
     {
-        return Movies::findOrFail($moviesId);
+        return Movies::where($location,$cinemaId)->get();
     }
 
     public function deletemovies($moviesId) 
@@ -32,9 +32,9 @@ class MoviesRepository implements MoviesRepositoryInterface
         return Movies::whereId($moviesId)->update($newDetails);
     }
 
-    public function filterMovies($cinemaId)
+    public function filterMovies()
     {
-        return Movies::where('location',$cinemaId)->get();
+        return Movies::all();
     }
     // public function getFulfilledmoviess() 
     // {

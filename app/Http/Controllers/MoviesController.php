@@ -28,9 +28,10 @@ class MoviesController extends Controller
     }
 
     // filter movies
-    public function movies_filter(Request $request)
+    public function filter(Request $request)
     {
-        $data = $this->movieRepository->filterMovies($request->id);
+        $data = $this->movieRepository->filterMovies();
+        return $data;
     }
     /**
      * Show the form for creating a new resource.
@@ -76,7 +77,7 @@ class MoviesController extends Controller
         $movieId = $request->route('id');
 
         return response()->json([
-            'data' => $this->moviesRepository->getMoviesById($movieId)
+            'data' => $this->moviesRepository->getMoviesById('location',$request->id)
         ]);
     }
 
