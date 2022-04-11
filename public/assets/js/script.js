@@ -5,14 +5,11 @@ $.ajaxSetup({
     }
 })
 
-// login functionality
-add_to_cart = (element)=>{
-    $('.add-to-cart-btn').attr('disabled',true)
-    $('.add-to-cart-btn').removeClass('btn-warning')
-    $('.add-to-cart-btn').addClass('btn-secondary')
+// filter movies functionality
+filter_cinema = (element)=>{
     let parent = element.parentElement;
-    let id = parent.querySelector('.product_id').value;
-    let cart = $('.total_items').html();
+    let id = parent.querySelector('.cinema_filter').value;
+    console.log(id)
     let form = new FormData();
     form.append('id',id);
     let url = parent.parentElement.querySelector('form').getAttribute('action');
@@ -53,45 +50,3 @@ add_to_cart = (element)=>{
     
     })
 }
-
-// remove from cart functionality
-remove_cart = (element)=>{
-    let parent = element.parentElement;
-    let id = parent.querySelector('.product_id').value;
-    let cart = $('.total_items').html();
-    let form = new FormData();
-    form.append('id',id);
-    let url = parent.parentElement.querySelector('form').getAttribute('action');
-    let type = parent.parentElement.querySelector('form').getAttribute('method');
-    $.ajax({
-        url :url,
-        method : type,
-        data : form,
-        processData : false,
-        dataType : 'json',
-        contentType : false,
-        success : function(response){
-            if (response.msg = 'success') {
-                Swal.fire(
-                    'Removed',
-                    'Product removed from cart.',
-                    'warning'
-                ).then(function(){
-                   
-                    $('.total_items').html(Number(cart) - 1);
-                })
-                // console.log(response)
-                parent.parentElement.parentElement.style.display = 'none'
-            }
-            else{
-                Swal.fire(
-                    'Error',
-                    'Error removing product from cart.',
-                    'danger'
-                )
-            }
-        }
-    
-    })
-}
-
