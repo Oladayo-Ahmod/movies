@@ -18,13 +18,13 @@
 @if (Session::has('user'))
             <!-- Nav tabs -->
     <section>
-        {{-- <form action="" method="POST" enctype="multipart/form-data"> --}}
+        <form action="" method="POST" enctype="multipart/form-data">
             <ul class="nav nav-tabs|pills" id="navId" role="tablist">
-                {{-- @csrf --}}
+                @csrf
 
                 <li class="nav-item">
                     <input type="hidden" name="" class="cinema_filter" value="1">
-                    <a href="filter_movies/1"  class="nav-link active " >cinema 1</a>
+                    <a href="/filter_movies/1"  class="nav-link active " >cinema 1</a>
 
                 </li>
                 <li class="nav-item">
@@ -42,7 +42,7 @@
                     </div>
                 </li>
         </ul>
-        {{-- </form> --}}
+        </form>
     </section>
    
 @endif
