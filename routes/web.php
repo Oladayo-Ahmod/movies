@@ -17,12 +17,18 @@ use Illuminate\Support\Facades\Session;
 */
 
 Route::get('/', function () {
+    Session::forget('user');
     return view('login');
+    
 });
 Route::get('filter_movies/{id}',[MoviesController::class,'show'])->name('movies.filter');
 Route::view('login', 'login');
 Route::post('/movies',[UserController::class, 'login']);
-Route::get('/logout', function () {
+Route::get('/logout', function () { // user logout route
     Session::forget('user');
     return redirect('/');
-}); // user logout route
+}); 
+Route::get('/login', function () {
+    Session::forget('user');
+    return redirect('/');
+}); 
