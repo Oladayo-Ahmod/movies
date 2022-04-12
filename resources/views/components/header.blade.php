@@ -21,11 +21,9 @@
         <form action="" method="POST" enctype="multipart/form-data">
             <ul class="nav nav-tabs|pills" id="navId" role="tablist">
                 @csrf
-
                 <li class="nav-item">
                     <input type="hidden" name="" class="cinema_filter" value="1">
                     <a href="/filter_movies/1"  class="nav-link active " >cinema 1</a>
-
                 </li>
                 <li class="nav-item">
                     <input type="hidden" name="" class="cinema_filter" value="2">
@@ -37,8 +35,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{Session::get('user')['name']}}</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/logout">Logout</a>
-                    
+                        <a class="dropdown-item" href="/logout">Logout</a>                   
                     </div>
                 </li>
         </ul>
