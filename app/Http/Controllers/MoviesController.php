@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Interfaces\MoviesRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
 class MoviesController extends Controller
 {
@@ -51,19 +52,36 @@ class MoviesController extends Controller
      */
     public function store(Request $request) 
     {
-        $movieDetails = $request->only([
-            'title',
-            'location',
-            'details',
-            'avatar'
+        // validation
+        $validator = Validator::make($request->all(),[
+            'title'=> 'required',
+            'details'=> 'required',
+            'location'=> 'required',
+            // 'avatar'=>'required|image|max:2048|mimes:jpeg,jgp,png,gif,svg',
         ]);
 
-        return response()->json(
-            [
-                'data' => $this->moviesRepository->createMovies($movieDetails)
-            ],
-            Response::HTTP_CREATED
-        );
+        if($validator->fails()){
+            return response()->json($validator->errors());
+        }
+        $imageName = $request->file('avatar')->extension();
+        $imageName = time() . '.' . $imageName;
+        // store the image in the public folder
+        if(!$request->avatar->move(public_path('assets/images'),$imageName)){ // if images is not valid
+            return response()->json('error uploading image, check if it is image');
+        }
+       
+        $movieDetails = [
+            'title'=> $request->title,
+            'details'=> $request->details,
+            'location'=> $request->location,
+            'avatar'=> 'assets/images/'.$imageName
+
+        ];
+      
+            if($this->moviesRepository->createMovies($movieDetails)){
+                return response()->json('success');
+            }
+  
     }
 
     /**

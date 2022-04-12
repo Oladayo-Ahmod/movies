@@ -23,8 +23,8 @@
                 {{-- @csrf --}}
 
                 <li class="nav-item">
-                    <input type="hidden" name="" class="cinema_filter" value="1">
                     <a href="filter_movies/1"  class="nav-link active " data-bs-toggle="tab">cinema 1</a>
+                    <input type="hidden" name="" class="cinema_filter" value="1">
                 </li>
                 <li class="nav-item">
                     <input type="hidden" name="" class="cinema_filter" value="2">

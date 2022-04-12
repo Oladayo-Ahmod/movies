@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 Route::get('filter_movies/{id}',[MoviesController::class,'show'])->name('movies.filter');
 Route::view('login', 'login');
-Route::post('/register',[UserController::class, 'login']);
+Route::post('/movies',[UserController::class, 'login']);
 Route::get('/logout', function () {
     Session::forget('user');
     return redirect('/');

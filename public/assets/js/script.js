@@ -4,51 +4,59 @@ $.ajaxSetup({
         'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
     }
 })
-
-// add categor)y functionality
-add_movie = (element)=>{
-    let parent = element.parentElement.parentElement;
-    console.log(parent)
-    let title = parent.querySelector('.title').value;
-    let details = parent.querySelector('.details').value;
-    let avatar  = this.files[0]
-    console.log(avatar)
-    let form = new FormData();
-    form.append('title',title);
-    form.append('details',details);
-    let url = parent.parentElement.querySelector('form').getAttribute('action');
-    let type = parent.parentElement.querySelector('form').getAttribute('method');
-    $.ajax({
-        url :url,
-        method : type,
-        data : form,
-        processData : false,
-        dataType : 'json',
-        contentType : false,
-        success : function(response){
-            $('#add-category').modal('hide')
-            if (response.msg = 'success') {
-                $('.cat_name').val('');
-                Swal.fire({
-                    showConfirmButton: false,
-                    timer: 1500,
-                    title :'Added',
-                    text : 'Category added successfully.',
-                    icon :'success'
-                })
+$(document).ready(function(){
+    // ad// add mmoviefunctionality
+    $('#addmovie').on('submit',function (element){
+        element.preventDefault()
+        let form = new FormData(this);
+        console.log(form)
+        let url = document.querySelector('#addmovie').getAttribute('data-action');
+        let type = document.querySelector('#addmovie').getAttribute('method');
+        $.ajax({
+            url : url,
+            method : type,
+            data : form,
+            processData : false,
+            dataType : 'json',
+            contentType : false,
+            success : function(response){
                 console.log(response)
+                $('#modelId').modal('hide');
+                if (response == 'success') {
+                    Swal.fire({
+                        showConfirmButton: false,
+                        timer: 1500,
+                        text : 'Movie added',
+                        icon :'success'
+                    })
+                    setTimeout(function () {
+					document.location.reload()
+                },2000)
+                }
+                else{
+                    let test =  '' ;
+                   Object.keys(response).forEach(e=>{
+                    test = response[e][0]
+                   }) ;
+                    console.log(test)
+                    Swal.fire(
+                        'Error',
+                        test,
+                        'warning'
+                    )
+                }
             }
-            else{
-                Swal.fire(
-                    'Error',
-                    'Error adding category.',
-                    'danger'
-                )
-            }
-        }
-    
+        
+        })
     })
-}
+})
+
+// add_movie = (element)=>{
+    // l
+// }
+// add_movie = (element)=>{
+    // l
+// }
 
 // filter movies functionality
 // function filter_cinema(element){

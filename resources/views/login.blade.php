@@ -1,4 +1,7 @@
 @include('components/header')
+@if (Session::has('user'))
+    
+@endif
 <div class="container">
     <div class="row justify-content-center align-items-center">
         <div class="col-md-4 bg-white shadow p-2 m-2 mt-5" style="border-radius:10px;">
@@ -21,7 +24,7 @@
                        </ul>
                    </div> 
                 @endif
-                <form class="form-group" enctype="multipart/form-data" method="POST" action="/register">
+                <form class="form-group" enctype="multipart/form-data" method="POST" action="/movies">
                     @csrf
                     <label for="email">Email</label>
                     <input type="email" name="email" required  class="form-control" id=""><br>

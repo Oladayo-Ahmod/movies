@@ -45,20 +45,21 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('add.movie')}}" class="form-group" method="post" enctype="multipart/form-data">
+                <form data-action="{{route('add.movie')}}" class="form-group" id="addmovie" method="post" enctype="multipart/form-data">
+                    @csrf
                     <label for="">Title</label>
-                    <input type="text" class="form-control title" required name="name">
+                    <input type="text" class="form-control title" required name="title">
                     <label for="">Details</label>
                     <input type="text" class="form-control details" required name="details">
                     <label for="image">Avatar</label>
-                    <input type="file" class="form-control image" name="image"><br>
-                    <select name="category" id="" class="form-control">
+                    <input type="file" class="form-control image" name="avatar"><br>
+                    <select name="location" id="" class="form-control">
                         <option value="">Choose location</option>
                         <option value="1">Location 1</option>
                         <option value="2">Location 2</option>
                         <option value="3">Location 3</option>
                     </select>
-                    <button onclick="add_movie(this)" type="button" class="btn btn-primary">Add</button>
+                    <button  type="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>
         </div>
