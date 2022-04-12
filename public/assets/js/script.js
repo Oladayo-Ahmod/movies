@@ -6,48 +6,55 @@ $.ajaxSetup({
 })
 
 // filter movies functionality
-filter_cinema = (element)=>{
-    let parent = element.parentElement;
-    let id = parent.querySelector('.cinema_filter').value;
-    console.log(parent.parentElement.parentElement)
-    let form = new FormData();
-    form.append('id',id);
-    let url = parent.parentElement.parentElement.parentElement.querySelector('form').getAttribute('action');
-    let type = parent.parentElement.parentElement.parentElement.querySelector('form').getAttribute('method');
-    $.ajax({
-        url :url,
-        method : type,
-        data : form,
-        processData : false,
-        dataType : 'json',
-        contentType : false,
-        success : function(response){
-            console.log(response)
-            if (response.msg = 'success') {
-                Swal.fire(
-                    'Added',
-                    'Product added to cart.',
-                    'success'
-                ).then(function(){
-                    $('.checkout-btn').removeClass('d-none')
-                    $('.add-to-cart-btn').attr('disabled',false)
-                    $('.add-to-cart-btn').removeClass('btn-secondary')
-                    $('.add-to-cart-btn').addClass('btn-warning')
-                    $('#product-image').css('height','390px')
-                })
-                $('.total_items').html(Number(cart) + 1);
-            }
-            else{
-                Swal.fire(
-                    'Error',
-                    'Error adding product to cart.',
-                    'danger'
-                )
-                    $('.add-to-cart-btn').attr('disabled',false)
-                    $('.add-to-cart-btn').removeClass('btn-secondary')
-                    $('.add-to-cart-btn').addClass('btn-warning')
-            }
-        }
+// function filter_cinema(element){
+//     let parent = element.parentElement;
+//     let id = parent.querySelector('.cinema_filter').value;
+//     let form = new FormData();
+//     form.append('id',id);
+//     let url = parent.parentElement.parentElement.parentElement.querySelector('form').getAttribute('action');
+//     let type = parent.parentElement.parentElement.parentElement.querySelector('form').getAttribute('method');
+//     $('.rows toggle_shadow > *').remove()
     
-    })
-}
+//     $.ajax({
+//         url :url,
+//         method : type,
+//         data : form,
+//         processData : false,
+//         dataType : 'json',
+//         contentType : false,
+//         success : function(response){
+//            // filtering dom
+//     var display = document.querySelectorAll(".toggle_display");
+//     for (var i = 0; i < display.length; i++) {
+//     display[i].setAttribute("onclick", "clickedIcon(this)");
+//     }
+//     function clickedIcon(newelement){
+  
+
+//         var parentTag = newelement.parentElement.parentElement.parentElement.parentElement.parentElement;
+//         console.log(parentTag)
+//         var child = parentTag.querySelector('.toggle_display')
+//         let filter = document.querySelectorAll(".cinema_location");
+//         var filter_array = Object.keys(filter).map(k => filter[k].value)
+//         console.log(filter_array)
+//     //     if(filter_array.includes('1')){
+//     //         console.log('xj')
+//     //    }
+
+       
+//     Object.keys(response.su).forEach(e=> {
+//         // console.log(response.su[e].location)
+//                if(filter_array.includes(response.su[e].location)){
+//                 child.style.display = 'none'
+
+//                }
+//             })
+//     }
+
+//     clickedIcon(element)
+            
+            
+//         }
+    
+//     })
+// }

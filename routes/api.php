@@ -26,4 +26,3 @@ Route::get('movies/{id}', [MoviesController::class, 'show']);
 Route::post('movies', [MoviesController::class, 'store']);
 Route::put('movies/{id}', [MoviesController::class, 'update']);
 Route::delete('movies/{id}', [MoviesController::class, 'delete']);
-Route::post('/filter_movies',[MoviesController::class,'show'])->name('movies.filter');

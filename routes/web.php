@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Session;
 Route::get('/', function () {
     return view('login');
 });
+Route::get('filter_movies/{id}',[MoviesController::class,'show'])->name('movies.filter');
 Route::view('login', 'login');
 Route::post('/register',[UserController::class, 'login']);
 Route::get('/logout', function () {

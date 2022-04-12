@@ -4,9 +4,10 @@
         <div class="container-fluid mt-5 trending ">
             <h4 class="text-center  my-4">All Movies</h4>
        
-            <div class="row">
+            <div class="row rows">
                 @foreach($movies as $movie)
-                <div class="col-md-3 my-4">
+                <div class="col-md-3 my-4 toggle_display">
+                    <input type="hidden" name="" class="cinema_location" value="{{$movie['location']}}">
                         <div class="card shadow rounded" style="background-color: transparent; border-color:rgb(230, 230, 248);">
                            <div class="image-hover">
                              <img class="card-img-top rounded trending-image" height="250px" src="../{{$movie['avatar']}}">
