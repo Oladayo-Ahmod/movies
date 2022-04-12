@@ -23,6 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // movies routes
 Route::get('movies', [MoviesController::class, 'index']);
 Route::get('movies/{id}', [MoviesController::class, 'show']);
-Route::post('movies', [MoviesController::class, 'store']);
+Route::post('movies', [MoviesController::class, 'store'])->name('add.movie');
 Route::put('movies/{id}', [MoviesController::class, 'update']);
 Route::delete('movies/{id}', [MoviesController::class, 'delete']);

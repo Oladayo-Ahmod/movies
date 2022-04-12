@@ -76,9 +76,9 @@ class MoviesController extends Controller
     {
         $movieId = $request->route('id');
 
-        return response()->json([
-            'su' => $this->moviesRepository->getMoviesById('location',$request->id)
-        ]);
+       $movies = $this->moviesRepository->getMoviesById('location',$request->id);
+       return view('movies',compact('movies'));
+
     }
 
     /**

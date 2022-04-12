@@ -18,20 +18,20 @@
 @if (Session::has('user'))
             <!-- Nav tabs -->
     <section>
-        <form action="{{route('movies.filter')}}" method="POST" enctype="multipart/form-data">
+        {{-- <form action="" method="POST" enctype="multipart/form-data"> --}}
             <ul class="nav nav-tabs|pills" id="navId" role="tablist">
-                @csrf
+                {{-- @csrf --}}
 
                 <li class="nav-item">
                     <input type="hidden" name="" class="cinema_filter" value="1">
-                    <a href="#" onclick="filter_cinema(this)" class="nav-link active " data-bs-toggle="tab">cinema 1</a>
+                    <a href="filter_movies/1"  class="nav-link active " data-bs-toggle="tab">cinema 1</a>
                 </li>
                 <li class="nav-item">
                     <input type="hidden" name="" class="cinema_filter" value="2">
-                    <a href="#" onclick="filter_cinema(this)" class="nav-link active " data-bs-toggle="tab">cinema 2</a>
+                    <a href="/filter_movies/2"  class="nav-link active " data-bs-toggle="tab">cinema 2</a>
                 </li> <li class="nav-item">
                     <input type="hidden" name="" class="cinema_filter" value="3">
-                    <a href="#" onclick="filter_cinema(this)" class="nav-link active cinema_3" data-bs-toggle="tab">cinema 3</a>
+                    <a href="/filter_movies/3"  class="nav-link active cinema_3" data-bs-toggle="tab">cinema 3</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{Session::get('user')['name']}}</a>
@@ -41,7 +41,7 @@
                     </div>
                 </li>
         </ul>
-        </form>
+        {{-- </form> --}}
     </section>
    
 @endif

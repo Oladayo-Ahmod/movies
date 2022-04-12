@@ -5,6 +5,46 @@ $.ajaxSetup({
     }
 })
 
+// add categor)y functionality
+add_movie = (element)=>{
+    let parent = element.parentElement;
+    let name = parent.querySelector('.cat_name').value;
+    let form = new FormData();
+    form.append('name',name);
+    let url = parent.parentElement.querySelector('form').getAttribute('action');
+    let type = parent.parentElement.querySelector('form').getAttribute('method');
+    $.ajax({
+        url :url,
+        method : type,
+        data : form,
+        processData : false,
+        dataType : 'json',
+        contentType : false,
+        success : function(response){
+            $('#add-category').modal('hide')
+            if (response.msg = 'success') {
+                $('.cat_name').val('');
+                Swal.fire({
+                    showConfirmButton: false,
+                    timer: 1500,
+                    title :'Added',
+                    text : 'Category added successfully.',
+                    icon :'success'
+                })
+                console.log(response)
+            }
+            else{
+                Swal.fire(
+                    'Error',
+                    'Error adding category.',
+                    'danger'
+                )
+            }
+        }
+    
+    })
+}
+
 // filter movies functionality
 // function filter_cinema(element){
 //     let parent = element.parentElement;
