@@ -58,12 +58,8 @@
                         <option value="2">Location 2</option>
                         <option value="3">Location 3</option>
                     </select>
-                    <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                    <button onclick="add_movie(this)" type="button" class="btn btn-primary">Add</button>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>

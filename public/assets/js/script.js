@@ -7,10 +7,15 @@ $.ajaxSetup({
 
 // add categor)y functionality
 add_movie = (element)=>{
-    let parent = element.parentElement;
-    let name = parent.querySelector('.cat_name').value;
+    let parent = element.parentElement.parentElement;
+    console.log(parent)
+    let title = parent.querySelector('.title').value;
+    let details = parent.querySelector('.details').value;
+    let avatar  = this.files[0]
+    console.log(avatar)
     let form = new FormData();
-    form.append('name',name);
+    form.append('title',title);
+    form.append('details',details);
     let url = parent.parentElement.querySelector('form').getAttribute('action');
     let type = parent.parentElement.querySelector('form').getAttribute('method');
     $.ajax({
